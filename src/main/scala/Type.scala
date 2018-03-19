@@ -1,10 +1,11 @@
-sealed trait Type
+sealed trait TypeExpression
+sealed trait Type extends TypeExpression
 case class TypeVar(name: String) extends Type
 case class Function(arg: Type, ret: Type) extends Type
 
-case class QualifiedType(predicates: Set[Predicate], `type`: Type)
+case class QualifiedType(predicates: Set[Predicate], `type`: Type) extends TypeExpression
 
-case class TypeScheme(types: Set[TypeVar], predicate: Predicate)
+case class TypeScheme(types: Set[TypeVar], predicate: Predicate) extends TypeExpression
 
 case class TypingStatement(variable: Var, `type`: Type)
 
