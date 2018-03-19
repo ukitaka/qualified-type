@@ -5,3 +5,11 @@ case class Function(arg: Type, ret: Type) extends Type
 case class QualifiedType(predicates: Set[Predicate], `type`: Type)
 
 case class TypeScheme(types: Set[TypeVar], predicate: Predicate)
+
+case class TypingStatement(variable: Var, `type`: Type)
+
+case class TypeAssignment(statements: Set[TypingStatement])
+
+case class Typing(predicates: Set[Predicate], assignments: Set[TypeAssignment], term: Term, `type`: Type)
+
+case class Substitution(typeVar: TypeVar, `type`: Type)
